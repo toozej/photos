@@ -16,7 +16,7 @@ build: ## Run vite build
 	@vite build
 
 serve: ## Run vite serve and auto-rebuild on changes
-	@trap 'pkill vite' INT
+	@killall vite
 	@vite serve &
 	@find pages/ static/ templates/ | entr vite build
 	@trap SIGINT
