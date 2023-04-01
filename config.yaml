@@ -1,0 +1,8 @@
+title: slapsandsnaps
+# note the trailing slash!
+url: "https://slapsandsnaps.photo/"
+desc: "Photography shenanigans."
+author:
+     name: "J. Tooze"
+     email: "j@slapsandsnaps.photo"
+default-template: text.html
