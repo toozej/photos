@@ -20,7 +20,7 @@ Instagram: [@slapsandsnaps](https://instagram.com/slapsandsnaps)
 
 ## contact
 
-Email: [j@slapsandsnaps.photo](mailto:j@icyphox.sh)
+Email: [j@slapsandsnaps.photo](mailto:j@slapsandsnaps.photo)
 
 
 ## colophon
