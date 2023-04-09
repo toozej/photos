@@ -41,9 +41,9 @@ subtitle: Hardware and software that I use.
 
 # computers
 
-(Windows) 🖥️ - custom-built PC
+🪟 🖥️ - custom-built PC
 - For running Lightroom (and PC games)
 
-(Linux) 💻 - HP Spectre 13
+🐧 💻 - HP Spectre 13
 - For everything else
 - Darktable, RawTherapee
