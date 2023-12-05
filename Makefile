@@ -10,15 +10,15 @@ MAKEFLAGS += --no-builtin-rules
 .PHONY: pre-reqs build serve docker help
 
 pre-reqs: ## Install vite
-	@go install git.icyphox.sh/vite@latest
+	@go install -v github.com/toozej/go-vite@latest
 
 build: ## Run vite build
-	@vite build
+	@go-vite build
 
-serve: ## Run vite serve and auto-rebuild on changes
-	-@killall vite
-	@vite serve &
-	@find pages/ static/ templates/ | entr vite build
+serve: pre-reqs ## Run vite serve and auto-rebuild on changes
+	-@killall go-vite
+	@go-vite serve &
+	@find pages/ static/ templates/ | entr go-vite build
 	@trap SIGINT
 
 docker: ## Build Docker image

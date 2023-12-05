@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang=en>
+  <head>
+    {{ template "partials/head.html" }}
+    <meta name="description" content="{{ index .Meta "subtitle" }}">
+    <link rel="stylesheet" href="/static/gallery.css" type="text/css">
+    <title>
+      {{ index .Meta "title" }} &mdash; {{ .Cfg.Title }}
+    </title>
+  </head>
+  <body>
+  <main>
+    <div class="sidenav">
+      {{ template "partials/nav.html" }}
+    </div>
+    <article align="left">
+      <h1>{{ index .Meta "title" }}</h1>
+      <h2>{{ index .Meta "subtitle" }}</h2>
+      {{ range $photo := splitcsv .Meta.photos }}
+        <div class=row>
+            <figure>
+                <img src="https://cdn.slapsandsnaps.photo/photos/{{ $photo }}" />
+                <figcaption>{{ stripext $photo }}</figcaption>
+            </figure>
+        </div>
+      {{ end }}
+    </article>
+  </main>
+  <footer>
+    {{ template "partials/footer.html" }}
+  </footer>
+</body>
+
+</html>
