@@ -1,7 +1,7 @@
 FROM golang:latest
 
-RUN go install git.icyphox.sh/vite@latest
+RUN go install github.com/toozej/go-vite@latest
 
 WORKDIR /app 
 
-ENTRYPOINT ["vite", "build"]
+ENTRYPOINT ["go-vite", "build"]
