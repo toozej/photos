@@ -25,7 +25,7 @@ Email: [j@slapsandsnaps.photo](mailto:j@slapsandsnaps.photo)
 
 ## colophon
 
-This site is built using [vite](https://github.com/icyphox/go-vite) -- a static
+This site is built using a [modified version](https://github.com/toozej/go-vite) of [vite](https://github.com/icyphox/go-vite) -- a static
 site generator written in Go, and vite's author [icyphox's site](https://github.com/icyphox/site)
 as a base for things like templates, etc.
 
