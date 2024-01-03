@@ -32,6 +32,10 @@ subtitle: Hardware and software that I use.
 - integrated Halina Anastigmat 45mm f/3.5 lens
 - (minor light leak on right side, fixed with electrical tape)
 
+[("Shitty" Digital Point and Shoot) 📷 - Samsung DV50](/samsung-dv50) w/
+
+- integrated Samsung Zoom 4.7-23.5mm f/3.3-5.9 lens
+
 📸 - Nikon Speedlight SB-600
 
 - ☠️ (seemingly corroded inside)

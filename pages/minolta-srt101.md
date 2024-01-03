@@ -6,6 +6,8 @@ subtitle: Vintage Film SLR
 
 Photo goes here
 
+I actually have two of these, a silver one and a black one. Ideally one will be normally loaded with colour film, and the other black&white so I never have to choose :D
+
 # Lenses
 
 - MC Rokkor-PF 58mm f1.4 MC II
