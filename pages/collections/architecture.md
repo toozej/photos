@@ -1,0 +1,7 @@
+---
+template: collection.html
+title: Architecture
+subtitle: 
+date: 2024-02-26
+photos: 000082910034.jpg,000086970004.jpg,000086970018.jpg,000086980003.jpg,000086990023.jpg
+---
