@@ -46,6 +46,6 @@ subtitle: Hardware and software that I use.
 🪟 🖥️ - custom-built PC
 - For running Lightroom (and PC games)
 
-🐧 💻 - HP Spectre 13
+🐧 💻 - Macbook Pro 16" i7
 - For everything else
-- Darktable, RawTherapee
+- Lightroom, Photoshop, Silverfast, etc. etc.

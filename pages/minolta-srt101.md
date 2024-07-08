@@ -4,7 +4,9 @@ title: Minolta SR-T 101
 subtitle: Vintage Film SLR
 ---
 
-Photo goes here
+<div class="row">
+<img src="https://cdn.slapsandsnaps.photo/photos/minolta-srt101-black.JPG" style="width: 500px"/>
+</div>
 
 I actually have two of these, a silver one and a black one. Ideally one will be normally loaded with colour film, and the other black&white so I never have to choose :D
 
