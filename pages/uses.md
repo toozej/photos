@@ -27,6 +27,10 @@ subtitle: Hardware and software that I use.
 - variety of Rokkor lenses as shown on [this camera's sub-page](/minolta-srt101)
 - National Parks strap by [MegssDesign](https://www.etsy.com/shop/MegssDesign)
 
+[("Vintage-ish" Film SLR) 📷 - Minolta X-700](/minolta-x700) w/
+
+- Midnight Mountain strap by [Wildtree Outdoor](https://wildtreeoutdoor.com/)
+
 [("Derpy" Film Viewfinder) 📷 - Halina 35x](/halina-35x) w/
 
 - integrated Halina Anastigmat 45mm f/3.5 lens
@@ -46,6 +50,6 @@ subtitle: Hardware and software that I use.
 🪟 🖥️ - custom-built PC
 - For running Lightroom (and PC games)
 
-🐧 💻 - Macbook Pro 16" i7
+🍎 💻 - Macbook Pro 16" i7
 - For everything else
 - Lightroom, Photoshop, Silverfast, etc. etc.
