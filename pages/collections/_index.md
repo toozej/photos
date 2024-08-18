@@ -16,10 +16,11 @@ Think of these as mini-galleries, or projects and you've got the right idea.
 - [GX470](/collections/gx470)
 
 ## 2024
-- [Snowpocalypse 2024](/collections/snowpocalypse2024)
-- [Night Lights 2024](/collections/nightlights2024)
+- [Snowpocalypse](/collections/snowpocalypse2024)
+- [Night Lights](/collections/nightlights2024)
 
 ## 2023
+- [PDX Soapbox Derby](/collections/soapboxderby2023)
 - [Chicago](/collections/chicago2023)
 - [The Haves](/collections/haves2023)
 - [Shitty Camera Challenge](/collections/shit2023)

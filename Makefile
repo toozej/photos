@@ -7,7 +7,7 @@ MAKEFLAGS += --no-builtin-rules
 # Set default goal such that `make` runs `make help`
 .DEFAULT_GOAL := help
 
-.PHONY: pre-reqs build serve docker help
+.PHONY: pre-reqs build serve kill docker help
 
 pre-reqs: ## Install vite
 	@go install -v github.com/toozej/go-vite@latest
@@ -20,6 +20,9 @@ serve: pre-reqs ## Run vite serve and auto-rebuild on changes
 	@go-vite serve &
 	@find pages/ static/ templates/ | entr go-vite build
 	@trap SIGINT
+
+kill: ## Kill any running instances of vite serve
+	-@killall go-vite
 
 docker: ## Build Docker image
 	@docker build -t toozej/photos .
