@@ -22,7 +22,7 @@ serve: pre-reqs ## Run vite serve and auto-rebuild on changes
 	@trap SIGINT
 
 docker: ## Build Docker image
-	@docker build -t toozej/slapsandsnaps .
+	@docker build -t toozej/photos .
 
 help: ## Display help text
 	@grep -E '^[a-zA-Z_-]+ ?:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'

@@ -1,9 +1,9 @@
 ---
-title: slapsandsnaps
+title: photos
 # note the trailing slash!
-url: "https://slapsandsnaps.photo/"
+url: "https://photos.toozej.com"
 desc: "Photography shenanigans."
 author:
-     name: "J. Tooze"
-     email: "j@slapsandsnaps.photo"
+     name: "James Tooze"
+     email: "james@toozej.photos"
 default-template: text.html
