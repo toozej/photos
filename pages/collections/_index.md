@@ -18,6 +18,7 @@ Think of these as mini-galleries, or projects and you've got the right idea.
 ## 2024
 - [Snowpocalypse](/collections/snowpocalypse2024)
 - [Night Lights](/collections/nightlights2024)
+- [PDX Soapbox Derby](/collections/soapboxderby2024)
 
 ## 2023
 - [PDX Soapbox Derby](/collections/soapboxderby2023)
