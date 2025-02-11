@@ -16,6 +16,7 @@ Think of these as mini-galleries, or projects and you've got the right idea.
 - [GX470](/collections/gx470)
 
 ## 2025
+- [Photo-A-Day Challenge](/collections/photoaday2025)
 - [PCC-Developed Film](/collections/pcc)
 
 ## 2024
