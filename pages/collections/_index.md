@@ -18,6 +18,7 @@ Think of these as mini-galleries, or projects and you've got the right idea.
 ## 2025
 - [Photo-A-Day Challenge](/collections/photoaday2025)
 - [PCC-Developed Film](/collections/pcc)
+- [PDX Cherry Blossoms 2025](/collections/pdxcherryblossoms2025)
 
 ## 2024
 - [Snowpocalypse](/collections/snowpocalypse2024)
