@@ -11,6 +11,7 @@ Think of these as mini-galleries, or projects and you've got the right idea.
 - [Street Photography](/collections/street)
 - [Film-Only](/collections/film)
 - [Architecture](/collections/architecture)
+- [Covered](/collections/covered)
 - [Keep Portland Cars Weird](/collections/pdxcars)
 - [R32](/collections/r32)
 - [GX470](/collections/gx470)
@@ -19,6 +20,7 @@ Think of these as mini-galleries, or projects and you've got the right idea.
 - [Photo-A-Day Challenge](/collections/photoaday2025)
 - [PCC-Developed Film](/collections/pcc)
 - [PDX Cherry Blossoms 2025](/collections/pdxcherryblossoms2025)
+- [Ladds 500](/collections/ladds5002025)
 
 ## 2024
 - [Snowpocalypse](/collections/snowpocalypse2024)
