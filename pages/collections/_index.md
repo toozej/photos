@@ -21,6 +21,7 @@ Think of these as mini-galleries, or projects and you've got the right idea.
 - [PCC-Developed Film](/collections/pcc)
 - [PDX Cherry Blossoms 2025](/collections/pdxcherryblossoms2025)
 - [Ladds 500](/collections/ladds5002025)
+- [TriMet MAX Type 1](/collections/type1)
 
 ## 2024
 - [Snowpocalypse](/collections/snowpocalypse2024)
