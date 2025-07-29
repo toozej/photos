@@ -11,3 +11,4 @@ photos:
 - [March](https://photos.app.goo.gl/Sj2fXgU6wJnPHjXH8)
 - [April](https://photos.app.goo.gl/BE5wfHyMHk4RDYsKA)
 - [May](https://photos.app.goo.gl/iV8XbDtZotLC4zpj6)
+- [June](https://photos.app.goo.gl/WhXmajKgVdAkjyqR8)
