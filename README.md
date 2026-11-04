@@ -27,4 +27,6 @@ The homepage keeps its three featured photos from `content/home-images.txt`. The
 
 Uses categories and equipment remain in `content/uses/`. Equipment uses `gearType` for its description. An item without an image uses the theme's placeholder.
 
-The Feed and category pages use site templates to show collection photos with the Folio Deluxe viewer. The build checks links, image alternatives, and WebP output. The build keeps original photos and source manifests out of `public/`.
+The Feed and category pages use site templates to show collection photos with the Folio Deluxe viewer. The Feed orders photos by collection date, newest first. Day is the default color scheme. Visitors can save a different color scheme with the footer toggle.
+
+The build checks links, image alternatives, and WebP output. The build keeps original photos and source manifests out of `public/`.

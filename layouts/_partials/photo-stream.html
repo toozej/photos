@@ -2,7 +2,7 @@
 {{ if eq .Kind "term" }}
   {{ $photos = where $photos "categories" "intersect" (slice .Data.Term) }}
 {{ else }}
-  {{ $photos = collections.Reverse $photos }}
+  {{ $photos = sort $photos "page.Date" "desc" }}
 {{ end }}
 <article class="series" aria-label="{{ .Title }}">
   {{ with .Content }}<div class="prose series-introduction">{{ . }}</div>{{ end }}
