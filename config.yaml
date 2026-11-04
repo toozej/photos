@@ -1,9 +1,0 @@
----
-title: photos
-# note the trailing slash!
-url: "https://photos.toozej.com"
-desc: "Photography shenanigans."
-author:
-     name: "James Tooze"
-     email: "james@toozej.photos"
-default-template: text.html

@@ -1,0 +1,14 @@
+{
+    "name": "Hugo",
+    "forwardPorts": [
+        1313
+    ] ,
+    "image": "mcr.microsoft.com/devcontainers/base:debian",
+    "features": {
+        "ghcr.io/devcontainers/features/hugo:1": {
+            "version": "0.168.0",
+            "extended": true
+        }
+    },
+    "postCreateCommand": "hugo server -D --appendPort=false --baseURL https://$CODESPACE_NAME-1313.$GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN --gc --minify --watch"
+}

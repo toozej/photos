@@ -1,2 +1,3 @@
-build/
-go-vite
+public/
+resources/_gen/
+.hugo_build.lock
