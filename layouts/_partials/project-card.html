@@ -1,0 +1,15 @@
+{{ $items := partial "gallery-data.html" . }}
+{{ if $items }}
+  {{ $cover := .Params.cover | default (index $items 0).src }}
+  {{ $alt := .Params.coverAlt | default .Title }}
+  {{ $img := partial "image-data.html" (dict "page" . "src" $cover) }}
+  <article class="project-card{{ if lt $img.width $img.height }} project-portrait{{ end }}">
+    <a href="{{ .RelPermalink }}" class="project-link">
+      <img src="{{ $img.src }}"{{ with $img.srcset }} srcset="{{ . }}" sizes="(max-width: 700px) 90vw, 68vw"{{ end }} width="{{ $img.width }}" height="{{ $img.height }}" alt="{{ $alt }}" loading="lazy" decoding="async">
+      <div class="project-caption">
+        <h2>{{ (.Params.displayTitle | default .Title) | markdownify }}</h2>
+        <p class="eyebrow">{{ with .Params.period }}{{ . }}{{ else }}{{ .Date.Format "2006" }}{{ end }} <span aria-hidden="true">·</span> {{ len $items }} {{ if eq (len $items) 1 }}photo{{ else }}photos{{ end }}</p>
+      </div>
+    </a>
+  </article>
+{{ end }}

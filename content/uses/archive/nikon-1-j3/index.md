@@ -1,10 +1,8 @@
 ---
 title: Nikon 1 J3
-layout: subpage
-type: Mirrorless
+gearType: Mirrorless
 status: Archived
 acquired: 2023
-featured: nikon-1-j3.jpg
 ---
 
 Tiny mirrorless camera that often ended up in my pocket or backpack, until the screen got smashed...

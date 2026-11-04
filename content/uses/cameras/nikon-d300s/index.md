@@ -1,7 +1,6 @@
 ---
 title: Nikon D300s
-layout: subpage
-type: DSLR
+gearType: DSLR
 status: Active
 acquired: 2019
 featured: d300s.jpg

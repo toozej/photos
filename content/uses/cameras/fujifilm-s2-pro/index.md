@@ -1,7 +1,6 @@
 ---
 title: Fujifilm Finepix S2 Pro
-layout: subpage
-type: DSLR
+gearType: DSLR
 status: Active
 acquired: 2021
 featured: finepix-s2-pro.jpg

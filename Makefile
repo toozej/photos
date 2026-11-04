@@ -9,6 +9,9 @@ MAKEFLAGS += --no-builtin-rules
 
 # Allow users to set environment variables to customize behavior, e.g. `make serve OPEN=true` to automatically open in browser
 OPEN ?=
+HUGO ?= hugo
+PYTHON ?= python3
+THEME_DIR := $(CURDIR)/themes/hugo-theme-folio-deluxe
 
 # Helper functions
 OS = $(shell uname -s)
@@ -26,7 +29,7 @@ else
 	HOSTNAME = localhost
 endif
 
-.PHONY: all pre-reqs update-hugo-version pre-commit pre-commit-install pre-commit-run build deploy serve serve-docker run debug clean test help
+.PHONY: all pre-reqs update-hugo-version pre-commit pre-commit-install pre-commit-run theme build check deploy serve serve-docker run debug clean test help
 
 all: pre-reqs update-hugo-version pre-commit clean build serve ## Default workflow
 
@@ -43,25 +46,33 @@ update-hugo-version: ## Updates Hugo version used throughout repo to latest
 		echo "Already on current Hugo version $$VERSION"; \
 	fi
 
-build: ## Build website to "public" output directory
-	hugo --gc --minify --cleanDestinationDir -d $(CURDIR)/public/
+theme: ## Initialize the pinned theme
+	git submodule update --init --recursive
 
-serve:  ## Run local web server (usage: `make serve OPEN=true` to automatically open in browser)
+build: theme ## Build website to "public" output directory
+	HUGO="$(HUGO)" $(PYTHON) "$(THEME_DIR)/scripts/build.py" --source "$(CURDIR)"
+
+check: theme ## Build and check links, images, and generated pages
+	HUGO="$(HUGO)" $(PYTHON) "$(THEME_DIR)/scripts/build.py" --source "$(CURDIR)" --check
+
+test: check ## Run the site checks
+
+serve: theme ## Run local web server (usage: `make serve OPEN=true` to automatically open in browser)
 	@if [ "$(OPEN)" = "true" ]; then \
 		$(OPENER) http://$(HOSTNAME):1313/ || echo "Open the following URL in a web browser: http://$(HOSTNAME):1313/"; \
 	else \
 		echo "Running local web server at http://$(HOSTNAME):1313/"; \
 	fi
 	rm -rf $(CURDIR)/public/*
-	@hugo server --gc --minify --disableFastRender --bind=$(BIND_ADDRESS) --baseURL=http://$(HOSTNAME)/ --port=1313 --watch
+	@$(HUGO) server --gc --minify --disableFastRender --bind=$(BIND_ADDRESS) --baseURL=http://$(HOSTNAME)/ --port=1313 --watch
 
 serve-docker: ## Run Hugo server via Docker
 	docker run --rm --name photos-hugo -p 1313:1313 --env-file $(CURDIR)/hugo.env -v $(CURDIR):/src --user $$(id -u):$$(id -g) floryn90/hugo:0.168.0-ext-alpine-onbuild server --gc --minify -p 1313 --watch
 
 run: serve ## Run local web server
 
-debug:  ## Run local web server
-	hugo server --logLevel debug --disableFastRender --gc --ignoreCache --minify --bind=$(BIND_ADDRESS) --baseURL=http://$(HOSTNAME)/ --port=1313 --watch
+debug: theme ## Run local web server
+	$(HUGO) server --logLevel debug --disableFastRender --gc --ignoreCache --minify --bind=$(BIND_ADDRESS) --baseURL=http://$(HOSTNAME)/ --port=1313 --watch
 
 pre-commit: pre-commit-install pre-commit-run ## Install and run pre-commit hooks
 

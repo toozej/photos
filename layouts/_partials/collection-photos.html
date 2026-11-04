@@ -1,0 +1,12 @@
+{{- $photos := slice -}}
+{{- $sections := .Site.Params.mainSections -}}
+{{- range where .Site.RegularPages "Section" "in" $sections -}}
+  {{- $page := . -}}
+  {{- $collectionCategories := .Params.categories | default slice -}}
+  {{- range partial "gallery-data.html" . -}}
+    {{- $categories := $collectionCategories | append (.categories | default slice) | uniq -}}
+    {{- $item := merge . (dict "categories" $categories) -}}
+    {{- $photos = $photos | append (dict "page" $page "item" $item "categories" $categories) -}}
+  {{- end -}}
+{{- end -}}
+{{- return $photos -}}

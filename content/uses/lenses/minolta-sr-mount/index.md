@@ -1,7 +1,6 @@
 ---
 title: Minolta SR-mount Lens Kit
-layout: subpage
-type: Lens Set
+gearType: Lens Set
 status: Active
 acquired: Ongoing
 featured: minolta-sr-mount.jpg

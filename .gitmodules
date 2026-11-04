@@ -1,0 +1,3 @@
+[submodule "themes/hugo-theme-folio-deluxe"]
+	path = themes/hugo-theme-folio-deluxe
+	url = git@github.com:toozej/hugo-theme-folio-deluxe.git

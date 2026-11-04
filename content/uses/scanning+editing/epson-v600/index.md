@@ -1,7 +1,6 @@
 ---
 title: Epson Perfection V600
-layout: subpage
-type: Film Scanner
+gearType: Film Scanner
 status: Active
 acquired: 2021
 featured: epson-v600.jpg

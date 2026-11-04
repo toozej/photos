@@ -1,0 +1,9 @@
+{{ define "main" }}
+  {{ partial "intro.html" . }}
+  {{ with .Content }}<div class="prose home-note">{{ . }}</div>{{ end }}
+  <ul class="term-list">
+    {{ range .Pages }}
+      <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }} <span class="eyebrow">{{ len .Pages }} collections</span></a></li>
+    {{ end }}
+  </ul>
+{{ end }}

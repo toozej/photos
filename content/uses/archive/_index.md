@@ -1,6 +1,6 @@
 ---
 title: Archive
-layout: subpage
+weight: 40
 ---
 
 Retired but still remembered gear.

@@ -14,7 +14,7 @@ Email: [james@toozej.photos](mailto:james@toozej.photos)
 
 ## colophon
 
-This site is built using a [modified version](https://github.com/toozej/galleriesdeluxe) of [galleriesdeluxe](https://github.com/bep/galleriesdeluxe) -- a Hugo Module on top of and the plural version of [gallerydeluxe](https://github.com/bep/gallerydeluxe) to show multiple photo galleries
+This site uses [Folio Deluxe](https://github.com/toozej/hugo-theme-folio-deluxe), a [Hugo](https://gohugo.io/) theme for photography collections.
 
 The source for this site is
 [here](https://github.com/toozej/photos).

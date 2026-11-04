@@ -1,7 +1,6 @@
 ---
 title: Nikon D100
-layout: subpage
-type: DSLR
+gearType: DSLR
 status: Active
 acquired: 2020
 featured: d100.jpg

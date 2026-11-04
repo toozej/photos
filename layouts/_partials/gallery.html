@@ -1,0 +1,17 @@
+{{ $page := . }}
+<article class="series" aria-label="{{ .Title }}">
+  {{ with .Content }}<div class="prose series-introduction">{{ . }}</div>{{ end }}
+  {{ range $index, $item := partial "gallery-data.html" . }}
+    {{ partial "photograph.html" (dict "page" $page "item" $item "index" $index) }}
+  {{ end }}
+</article>
+{{ $next := false }}
+{{ $found := false }}
+{{ range (where .Site.RegularPages "Section" $page.Section).ByWeight }}
+  {{ if and $found (not $next) (partial "gallery-data.html" .) }}{{ $next = . }}{{ end }}
+  {{ if eq . $page }}{{ $found = true }}{{ end }}
+{{ end }}
+<nav class="series-navigation" aria-label="Collections">
+  {{ with .Site.GetPage "collections" }}<a class="eyebrow" href="{{ .RelPermalink }}">{{ site.Params.text.allWork }}</a>{{ end }}
+  {{ with $next }}<a class="next-project" href="{{ .RelPermalink }}"><span class="eyebrow">{{ .Site.Params.text.nextStory }}</span><span>{{ (.Params.displayTitle | default .Title) | markdownify }}</span></a>{{ end }}
+</nav>

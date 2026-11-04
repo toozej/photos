@@ -1,0 +1,4 @@
+{{ with resources.Get "favicon-32x32.png" }}
+  {{ $icon := .Process "webp" }}
+  <link rel="icon" type="image/webp" sizes="32x32" href="{{ $icon.RelPermalink }}">
+{{ end }}

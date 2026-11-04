@@ -1,0 +1,14 @@
+{{ define "main" }}
+  {{ partial "intro.html" . }}
+  {{ with .Content }}<div class="prose home-note">{{ . }}</div>{{ end }}
+  <section class="series" aria-labelledby="featured-photos">
+    <h2 class="eyebrow home-note" id="featured-photos">Featured from collections</h2>
+    {{ $page := . }}
+    {{ range $index, $item := partial "gallery-data.html" . }}
+      {{ partial "photograph.html" (dict "page" $page "item" $item "index" $index) }}
+    {{ end }}
+  </section>
+  <nav class="series-navigation" aria-label="Collections">
+    {{ with .Site.GetPage "collections" }}<a class="eyebrow" href="{{ .RelPermalink }}">View all collections →</a>{{ end }}
+  </nav>
+{{ end }}

@@ -1,7 +1,6 @@
 ---
 title: Nikon N80
-layout: subpage
-type: Film SLR
+gearType: Film SLR
 status: Active
 acquired: 2023
 featured: nikon-n80.jpg

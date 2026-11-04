@@ -1,7 +1,6 @@
 ---
 title: MacBook Pro 16-inch (Intel)
-layout: subpage
-type: Editing Workstation
+gearType: Editing Workstation
 status: Active
 acquired: 2020
 featured: macbook-pro-16-intel.jpg

@@ -1,7 +1,6 @@
 ---
 title: Minolta X-700
-layout: subpage
-type: Film SLR
+gearType: Film SLR
 status: Archived
 acquired: 2021
 featured: minolta-x700.jpg

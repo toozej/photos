@@ -1,7 +1,6 @@
 ---
 title: Minolta SR-T 101
-layout: subpage
-type: Film SLR
+gearType: Film SLR
 status: Active
 acquired: 2022
 featured: minolta-srt101.jpg

@@ -1,0 +1,15 @@
+{{ $photos := partialCached "collection-photos.html" . }}
+{{ if eq .Kind "term" }}
+  {{ $photos = where $photos "categories" "intersect" (slice .Data.Term) }}
+{{ else }}
+  {{ $photos = collections.Reverse $photos }}
+{{ end }}
+<article class="series" aria-label="{{ .Title }}">
+  {{ with .Content }}<div class="prose series-introduction">{{ . }}</div>{{ end }}
+  {{ range $index, $photo := $photos }}
+    {{ partial "photograph.html" (dict "page" .page "item" .item "index" $index) }}
+  {{ end }}
+</article>
+<nav class="series-navigation" aria-label="Collections">
+  {{ with .Site.GetPage "collections" }}<a class="eyebrow" href="{{ .RelPermalink }}">{{ site.Params.text.allWork }}</a>{{ end }}
+</nav>

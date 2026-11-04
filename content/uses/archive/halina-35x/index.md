@@ -1,7 +1,6 @@
 ---
 title: Halina 35x
-layout: subpage
-type: Viewfinder
+gearType: Viewfinder
 status: Archived
 acquired: 2020
 featured: halina-35x.jpg

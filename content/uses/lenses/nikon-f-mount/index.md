@@ -1,7 +1,6 @@
 ---
 title: Nikon F-mount Lens Kit
-layout: subpage
-type: Lens Set
+gearType: Lens Set
 status: Active
 acquired: Ongoing
 featured: nikon-f-mount.jpg
