@@ -1,0 +1,9 @@
+{
+ "compilerOptions": {
+  "paths": {
+   "*": [
+    "../../../../../Library/Caches/hugo_cache/modules/filecache/modules/pkg/mod/github.com/toozej/gallerydeluxe@v0.0.0-20260402033519-62ad47a3d227/assets/*"
+   ]
+  }
+ }
+}

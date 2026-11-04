@@ -1,6 +1,6 @@
 # [photos](https://photos.toozej.com)
 
-Photography site built using my [go-vite](https://github.com/toozej/go-vite) SSG fork
+Photography site built using my [galleriesdeluxe](https://github.com/toozej/galleriesdeluxe) Hugo module fork
 
 ## Usage
 - `make` ;) 

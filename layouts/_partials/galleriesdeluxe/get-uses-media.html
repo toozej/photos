@@ -1,0 +1,54 @@
+{{/* Convert the full-size Uses image as well as its thumbnail to WebP. */}}
+{{ $images := .Resources.ByType "image" }}
+{{ $selected := "" }}
+
+{{ with .Params.featured }}
+  {{ $featured := . }}
+  {{ if or (strings.HasPrefix $featured "https://") (strings.HasPrefix $featured "http://") }}
+    {{ with try (resources.GetRemote $featured) }}
+      {{ with .Err }}
+        {{ warnf "Error fetching uses featured image %q: %s" $featured . }}
+      {{ else with .Value }}
+        {{ $selected = . }}
+      {{ end }}
+    {{ end }}
+  {{ else }}
+    {{ $featuredBase := path.Base $featured }}
+    {{ $featuredExt := path.Ext $featuredBase }}
+    {{ $featuredName := strings.TrimSuffix $featuredExt $featuredBase }}
+    {{ range $images }}
+      {{ $imgBase := path.Base .Name }}
+      {{ $imgExt := path.Ext $imgBase }}
+      {{ if and (strings.Contains $imgBase $featuredName) (eq $imgExt $featuredExt) }}
+        {{ $selected = . }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{ if and (not $selected) (gt (len $images) 0) }}
+  {{ $id := .RelPermalink | hash.FNV32a }}
+  {{ $idx := mod $id (len $images) }}
+  {{ $selected = index $images $idx }}
+{{ end }}
+
+{{ if and (not $selected) .Params.hero }}
+  {{ with try (resources.GetRemote .Params.hero) }}
+    {{ with .Err }}
+      {{ warnf "Error fetching uses hero image %q: %s" $.Params.hero . }}
+    {{ else with .Value }}
+      {{ $selected = . }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{ $media := dict }}
+{{ if $selected }}
+  {{ $heroFilters := slice images.AutoOrient (images.Process "webp") }}
+  {{ $thumbFilters := slice images.AutoOrient (images.Process "resize 700x webp") }}
+  {{ $hero := $selected | images.Filter $heroFilters }}
+  {{ $thumb := $selected | images.Filter $thumbFilters }}
+  {{ $media = dict "hero" $hero "thumb" $thumb }}
+{{ end }}
+
+{{ return $media }}
