@@ -2,7 +2,7 @@
 services:
   photos_hugo:
     container_name: photos_hugo
-    image: floryn90/hugo:0.168.0-ext-alpine-onbuild
+    image: floryn90/hugo:0.170.0-alpine-onbuild
     restart: always
     user: "1000:1000"
     security_opt:

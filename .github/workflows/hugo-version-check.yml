@@ -22,7 +22,7 @@ jobs:
         id: version-check
         run: |
           set -e  # Exit on any error
-          CURRENT_VERSION=$(yq '.services.words_hugo.image' docker-compose.yml | sed -E 's/.*hugo:([0-9.]+).*/\1/')
+          CURRENT_VERSION=$(yq -r '.services.photos_hugo.image' docker-compose.yml | sed -E 's/.*hugo:([0-9.]+).*/\1/')
           API_URL="https://registry.hub.docker.com/v2/repositories/floryn90/hugo/tags?page_size=100"
           ALL_TAGS=""
 
@@ -52,7 +52,7 @@ jobs:
           echo "$ALL_TAGS"
 
           # Process all collected tags
-          LATEST_VERSION=$(echo "$ALL_TAGS" | grep -E "^[0-9]+\.[0-9]+\.[0-9]+-ext-alpine-onbuild$" | grep -v "latest" | sort -V | tail -n1 | sed 's/-ext-alpine-onbuild//' | tr -d '[:space:]')
+          LATEST_VERSION=$(echo "$ALL_TAGS" | grep -E "^[0-9]+\.[0-9]+\.[0-9]+-alpine-onbuild$" | sort -V | tail -n1 | sed 's/-alpine-onbuild//' | tr -d '[:space:]')
 
           if [ -z "$LATEST_VERSION" ]; then
             echo "No valid version found"
@@ -62,7 +62,7 @@ jobs:
           echo "Current version: $CURRENT_VERSION"
           echo "Latest version: $LATEST_VERSION"
 
-          if [ "$CURRENT_VERSION" != "$LATEST_VERSION" ]; then
+          if [ "$(printf '%s\n' "$CURRENT_VERSION" "$LATEST_VERSION" | sort -V | tail -n1)" != "$CURRENT_VERSION" ]; then
             echo "new_version=${LATEST_VERSION}" >> "$GITHUB_OUTPUT"
             echo "update_available=true" >> "$GITHUB_OUTPUT"
           fi
@@ -79,25 +79,28 @@ jobs:
         if: steps.version-check.outputs.update_available == 'true'
         run: |
           NEW_VERSION="${{ steps.version-check.outputs.new_version }}"
-          docker pull "floryn90/hugo:${NEW_VERSION}-ext-alpine-onbuild"
-          docker volume create words_hugo_output
+          docker pull "floryn90/hugo:${NEW_VERSION}-alpine-onbuild"
+          docker volume create photos_hugo_output
           # Capture the build output to a variable
           BUILD_OUTPUT=$(docker run --rm \
             --env-file "${PWD}/hugo.env" \
-            -v "${PWD}/site:/src" \
-            -v words_hugo_output:/target \
-            "floryn90/hugo:${NEW_VERSION}-ext-alpine-onbuild" --noBuildLock 2>&1)
-          # Add build output to GITHUB_OUTPUT, escaping newlines
-          echo "run-output<<EOF" >> "$GITHUB_OUTPUT"
-          echo "$BUILD_OUTPUT" >> "$GITHUB_OUTPUT"
-          echo "EOF" >> "$GITHUB_OUTPUT"
+            -v "${PWD}:/src" \
+            -v photos_hugo_output:/target \
+            "floryn90/hugo:${NEW_VERSION}-alpine-onbuild" --noBuildLock 2>&1)
+          # Record the build output in the step output.
+          {
+            echo "run-output<<EOF"
+            echo "$BUILD_OUTPUT"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
 
       - name: Update Version
         if: steps.version-check.outputs.update_available == 'true' && success()
         run: |
           NEW_VERSION="${{ steps.version-check.outputs.new_version }}"
           # Update version in files which use it
-          sed -i "s/floryn90\/hugo:.*-ext-alpine-onbuild/floryn90\/hugo:${NEW_VERSION}-ext-alpine-onbuild/" docker-compose.yml Makefile
+          sed -i -E "s/floryn90\/hugo:[0-9.]+-alpine-onbuild/floryn90\/hugo:${NEW_VERSION}-alpine-onbuild/" docker-compose.yml Makefile
+          sed -i -E "s/(OLD_VERSION=\")[0-9.]+/\1${NEW_VERSION}/" Makefile
           sed -i "s/\"version\": \".*\"/\"version\": \"${NEW_VERSION}\"/" .devcontainer/devcontainer.json
 
       - name: Close existing Hugo update PRs

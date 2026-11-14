@@ -32,14 +32,22 @@ endif
 all: pre-reqs update-hugo-version pre-commit clean build serve ## Default workflow
 
 pre-reqs: #pre-commit-install ## Install pre-commit hooks and necessary binaries
-	command -v hugo || (command -v ports && sudo ports install -y hugo) || (command -v brew && brew install hugo) || curl --silent https://api.github.com/repos/gohugoio/hugo/releases/latest | grep "browser_download_url.*Linux-64bit.tar.gz" | grep "extended" | cut -d '"' -f 4 | wget -qO- -i - | tar -xz hugo && sudo mv hugo /usr/local/bin/hugo && sudo chmod +x /usr/local/bin/hugo && rm -f hugo_extended_*_Linux-64bit.tar.gz
+	command -v hugo || \
+		(command -v ports && sudo ports install -y hugo) || \
+		(command -v brew && brew install hugo) || \
+		(set -euo pipefail; \
+			DOWNLOAD_URL=$$(curl -fsSL https://api.github.com/repos/gohugoio/hugo/releases/latest | jq -er '.assets[] | select(.name | test("^hugo_[0-9]+[.][0-9]+[.][0-9]+_linux-amd64[.]tar[.]gz$$")) | .browser_download_url'); \
+			curl -fsSL "$$DOWNLOAD_URL" | tar -xz hugo; \
+			sudo install -m 0755 hugo /usr/local/bin/hugo; \
+			rm -f hugo)
 
 update-hugo-version: ## Updates Hugo version used throughout repo to latest
-	@OLD_VERSION="0.168.0" && \
-	VERSION=`curl -s https://api.github.com/repos/gohugoio/hugo/releases/latest | jq -r '.html_url' | cut -d "/" -f 8 | tr -d "v"`; \
+	@set -euo pipefail; \
+	OLD_VERSION="0.170.0"; \
+	VERSION=$$(curl -fsSL https://api.github.com/repos/gohugoio/hugo/releases/latest | jq -er '.tag_name | ltrimstr("v")'); \
 	if [[ "$$OLD_VERSION" != "$$VERSION" ]]; then \
 		echo "Updating Hugo from $$OLD_VERSION to $$VERSION"; \
-		echo "$(CURDIR)/docker-compose.yml $(CURDIR)/.devcontainer/devcontainer.json $(CURDIR)/Makefile" | xargs sed -i "" -e "s/$$OLD_VERSION/$$VERSION/g"; \
+		$(PYTHON) -c 'from pathlib import Path; import sys; old, new = sys.argv[1:3]; [path.write_text(path.read_text().replace(old, new)) for path in map(Path, sys.argv[3:])]' "$$OLD_VERSION" "$$VERSION" "$(CURDIR)/docker-compose.yml" "$(CURDIR)/.devcontainer/devcontainer.json" "$(CURDIR)/Makefile"; \
 	else \
 		echo "Already on current Hugo version $$VERSION"; \
 	fi
@@ -65,7 +73,7 @@ serve: theme ## Run local web server (usage: `make serve OPEN=true` to automatic
 	@"$(HUGO)" server --gc --minify --disableFastRender --bind="$(BIND_ADDRESS)" --baseURL="$(SERVER_URL)" --port=1313 --watch
 
 serve-docker: theme ## Run Hugo server via Docker
-	docker run --rm --name photos-hugo -p "$(BIND_ADDRESS):1313:1313" --env-file "$(CURDIR)/hugo.env" -v "$(CURDIR):/src" --user $$(id -u):$$(id -g) floryn90/hugo:0.168.0-ext-alpine-onbuild server --gc --minify --bind=0.0.0.0 --baseURL="$(SERVER_URL)" -p 1313 --watch
+	docker run --rm --name photos-hugo -p "$(BIND_ADDRESS):1313:1313" --env-file "$(CURDIR)/hugo.env" -v "$(CURDIR):/src" --user "$$(id -u):$$(id -g)" floryn90/hugo:0.170.0-alpine-onbuild server --gc --minify --bind=0.0.0.0 --baseURL="$(SERVER_URL)" -p 1313 --watch
 
 run: serve ## Run local web server
 

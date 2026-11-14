@@ -6,8 +6,7 @@
     "image": "mcr.microsoft.com/devcontainers/base:debian",
     "features": {
         "ghcr.io/devcontainers/features/hugo:1": {
-            "version": "0.168.0",
-            "extended": true
+            "version": "0.170.0"
         }
     },
     "postCreateCommand": "git submodule update --init --recursive && hugo server -D --appendPort=false --baseURL https://$CODESPACE_NAME-1313.$GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN --gc --minify --watch"
